@@ -43,6 +43,33 @@ def username():
     speak("Welcome Mister"+uname) 
     speak("How cani help you Sir ?")
 
+def movie ():
+     moviesdb = imdb.IMDb()
+     speak("Please tell me the movie name sir")
+     text = takeCommand()
+     movies = moviesdb.search_movie(text)
+     speak("Searching for " + text )
+     if len(movies==0)
+         speak("No results found")
+     else:
+         speak("I found these :")
+         for movie in movies :
+              title = movie["titlle"]
+              year = movie["year"]
+              speak(f'{title}-{year}')
+              info = movie.getID()
+              movie = moviesdb.get_movie(info)
+              rating = movie["rating"]
+              plot = movie['plot outline']
+              if year<int(datetime.datetime.now().strftime("%Y")):
+                   speak(f'{title} was released in {year} has IMDB ratings oof {rating} . The plot summary of movie is {plot} ')
+                   break
+              else:
+                   speak(f'{title} will be released in {year} has IMDB ratings oof {rating} . The plot summary of movie is {plot} ')
+                   break
+              
+
+
 def wishMe():
      hour=int(datetime.datetime.now().hour())
      if hour>=0 and hour<12:
