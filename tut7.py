@@ -16,6 +16,12 @@ elif 'cpu status' in order :
 elif 'empty recycle bin' in order :
      winshell.recycle_bin().empty(confirm=False, show_progress = False , sound = True)
      speak("recycle bin cleaed")
+elif 'camera' in order :
+     cam()
+elif 'ip' in order :
+     host = socket.gethostname()
+     ip = socket.gethostname(host)
+     speak("your IP address is" + ip )
 
 
           
