@@ -12,6 +12,7 @@ import pyautogui
 import psutil
 import winshell
 import socket
+
 enngine=pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
 engnie.setProperty('voice' , voices[1].1d)
@@ -77,6 +78,36 @@ def wishMe():
      else hour>=12 and hour<18 :
           speak("Good Afternood Sir ")
      speak("I am your virtual assistant jarvis .")
+     
+def rock():
+     you = int(input("Please enter your choice :- \n 1-Rock \n 2-Paper \n 3-Scissor"))
+     shapes = {1-'rock', 2-'paper', 3-'siscors'}
+     if you not in shapes :
+          print("Please enter a valid number ")
+          exit()
+     comp = random.randint(1,3)
+     print("You choose", ypu)
+     print("Computer choose",comp)
+     if (you==1) and (comp==3) or (you==2) and (comp==1) or ( you==3) and (comp==2):
+          speak("Congratulations you won !")
+     elif(you==comp):
+          speak("Match tied")
+     else:
+          speak("You loose")
+          
+def count()
+     t = int(input("Enter time in seconds:"))
+     while t:
+        min,secs = divmod(t,60)
+        timer = '{:02d}:{:02d}'.format(min,sesc)
+        print(timer,end="\r")
+        t-=1
+        print("\n")
+        
+          
+          
+
+
 
 
 if __name__=='__main_' :
