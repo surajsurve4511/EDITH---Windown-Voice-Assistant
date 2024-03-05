@@ -1,0 +1,40 @@
+<div class="grid items-center gap-8 px-4">
+    <header class="flex flex-col items-center gap-2">
+      <h1 class="text-3xl font-bold">Windows Voice Assistant</h1>
+      <p class="text-sm text-gray-500 dark:text-gray-400">Speak commands or ask questions</p>
+    </header>
+    <div class="flex flex-col items-center gap-2">
+      <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-11 rounded-md px-8">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="w-6 h-6"
+        >
+          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+          <line x1="12" x2="12" y1="19" y2="22"></line>
+        </svg>
+        <span class="sr-only">Record</span>
+      </button>
+      <div class="flex flex-col w-full gap-2">
+        <div class="rounded-t-none" style="resize:none"></div>
+        <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-9 rounded-md px-3 rounded-t-none">
+          Submit
+        </button>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2">
+      <h2 class="text-lg font-semibold">Output</h2>
+      <div class="grid gap-2">
+        <p class="text-sm">You: What's the weather like today?</p>
+        <p class="text-sm">Assistant: The weather is expected to be sunny with a high of 75 degrees.</p>
+      </div>
+    </div>
+  </div>
