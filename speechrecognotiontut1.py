@@ -7,6 +7,7 @@ import webbrowser
 import wikipedia
 import pyjokes
 import subprocess
+import time
 enngine=pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
 engnie.setProperty('voice' , voices[1].1d)
