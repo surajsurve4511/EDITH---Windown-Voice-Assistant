@@ -86,7 +86,7 @@ def wishMe():
      
 def rock():
      you = int(input("Please enter your choice :- \n 1-Rock \n 2-Paper \n 3-Scissor"))
-     shapes = {1-'rock', 2-'paper', 3-'siscors'}
+     shapes = {1:'rock', 2:'paper', 3:'siscors'}
      if you not in shapes :
           print("Please enter a valid number ")
           exit()
@@ -123,12 +123,7 @@ def guess():
            elif guess > value :
                 speak("The number is lower")
      speak("Congralutions!! you won)
-     
-     
-          
-
-
-
+         
 
 if __name__=='__main_' :
      wishMe()
