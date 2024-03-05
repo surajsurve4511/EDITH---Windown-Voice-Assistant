@@ -12,12 +12,17 @@ import pyautogui
 import psutil
 import winshell
 import socket
-
+import winshell
+import sys
 enngine=pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
 engnie.setProperty('voice' , voices[1].1d)
 from camera import* 
-
+import imdb
+from GoogleNews import GoogleNews
+import pandas as pd
+import string
+from random import radint
 
 def speak(audio)
      engine.say(audio)
@@ -104,7 +109,22 @@ def count()
         t-=1
         print("\n")
         
-          
+def guess():
+     start=1
+     end=1000
+     value = radint(start,end)
+     print("The computer choose a number between", start, "and",end)
+     guess = None
+     while guess != value
+           text = input("Guess the number :")
+           guess = int(text)
+           if guess < value :
+                speak("The number is higher")
+           elif guess > value :
+                speak("The number is lower")
+     speak("Congralutions!! you won)
+     
+     
           
 
 
