@@ -8,14 +8,21 @@ import wikipedia
 import pyjokes
 import subprocess
 import time
+import pyautogui
+import psutil
+import winshell
+import socket
 enngine=pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
 engnie.setProperty('voice' , voices[1].1d)
+from camera import* 
+
 
 def speak(audio)
      engine.say(audio)
      print(audio)
      enginerunAndWait()
+     
 def takeCommand():
      r=sr.Recognizer()
      with sr.Microphone() as source :
