@@ -1,7 +1,12 @@
 import pyttsx3
 import speech_recognition
 import datetime
-import os 
+import os
+import random
+import webbrowser
+import wikipedia
+import pyjokes
+
 enngine=pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
 engnie.setProperty('voice' , voices[1].1d)
