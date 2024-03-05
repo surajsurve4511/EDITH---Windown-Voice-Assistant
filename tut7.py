@@ -44,6 +44,7 @@ elif 'bmi' in order :
      else:
           speak("Enter valid details)
 elif 'movie' in order :
+          movie()
           
 
 
