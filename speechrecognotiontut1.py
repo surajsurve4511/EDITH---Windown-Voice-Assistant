@@ -1,5 +1,5 @@
 import pyttsx3
-import speech_recognition
+import speech_recognition as sr
 import datetime
 import os
 import random
@@ -14,9 +14,9 @@ import winshell
 import socket
 import winshell
 import sys
-enngine=pyttsx3.init('sapi5')
+engine=pyttsx3.init('sapi5')
 voices=engine.getProperty('voices')
-engnie.setProperty('voice' , voices[1].1d)
+engine.setProperty('voice' , voices[1].1d)
 from camera import* 
 import imdb
 from GoogleNews import GoogleNews
@@ -33,16 +33,16 @@ def takeCommand():
      r=sr.Recognizer()
      with sr.Microphone() as source :
          print("Listening ......")
-         r..pause_threshold=1
+         r.pause_threshold=1
          audio=r.listen(source, timeout=1,phrase_time_limit=10)
-         try:
+     try:
              print("Recognizing....")
              query=r.recognize_google(audio,language='en-in')
              print(f"User said {query}\n")
-         except Exception as e :    
+     except Exception as e :    
              speak(f"Unableto recognize yoour voice......")
-             return"None"
-         return query 
+     return"None"
+return query 
 def username():
     speak("What shoudi call yoou sir")
     uname=takeCommand()
