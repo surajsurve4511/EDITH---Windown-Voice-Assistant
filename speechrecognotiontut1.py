@@ -27,7 +27,7 @@ from random import radint
 def speak(audio)
      engine.say(audio)
      print(audio)
-     enginerunAndWait()
+     engine.runAndWait()
      
 def takeCommand():
      r=sr.Recognizer()
@@ -38,7 +38,7 @@ def takeCommand():
      try:
              print("Recognizing....")
              query=r.recognize_google(audio,language='en-in')
-             print(f"User said {query}\n")
+             print(f"You said {query}\n")
      except Exception as e :    
              speak(f"Unableto recognize yoour voice......")
      return"None"
