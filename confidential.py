@@ -67,6 +67,19 @@ def search_querry(query) :
     search_url= f'https://www.google.com/search?q={query}'
     webbrowser.open_new_tab(search_url)
 
+from api import apikey
+def gpt(query):
+    openai.api_key = "apikey"
+    content = query
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": content}
+        ]
+    )
+    chat_response = completion.choices[0].message.content
+    print(f'ChatGPT: {chat_response}')     
+
 
 if __name__==  '__main__' :
     wishMe()
@@ -76,7 +89,10 @@ if __name__==  '__main__' :
         if 'how are you ' in order:
               speak("I am fine , Thankyou for asking ")
               speak("How are you , Sir ?")
- 
+
+        elif 'what is' or 'how ' or 'give me' or 'what' or 'when' or 'why' in order :
+             gpt(order)  
+        
         elif 'fine' in order or 'good' in order:
               speak("it's good to know that you are fine.")
  
