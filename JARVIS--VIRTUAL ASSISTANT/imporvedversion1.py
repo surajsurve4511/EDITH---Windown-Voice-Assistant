@@ -16,19 +16,17 @@ voices=engine.getProperty('voices')
 engine.setProperty('voice' , voices[1].id)
 
 
-
 def username():
     '''speak("What should I call you")
     uname=takeCommand()
     speak("Welcome Mister "+ uname)''' 
-    speak("Welcome Atharv How can i help you ?")
+    speak("Welcome Atharva How can i help you ?")
 
 def cpu():
     usage=str(psutil.cpu_percent())
     speak("CPU is at"+ usage)
     battery= str(psutil.sensors_battery())
-    speak("Battery is at"+ battery)    
-
+    speak("Battery is at"+ battery)
 
 def wishMe():
     hour = int(datetime.datetime.now().hour)
@@ -44,7 +42,7 @@ def speak(audio) :
      engine.say(audio)
      print(audio)
      engine.runAndWait()
-     
+
 def takeCommand():
     # obtain audio from the microphone
     r = sr.Recognizer()
@@ -70,6 +68,70 @@ def search_querry(query) :
     webbrowser.open_new_tab(search_url)
 
 
+def cam():
+ import tkinter
+ from tkinter import messagebox
+ import PIL.Image, PIL.ImageTk
+ import time
+ import cv2
+
+ class App:
+    def __init__(self, window, window_title, video_source=0):
+        self.window = window
+        self.window.title(window_title)
+        self.video_source = video_source
+
+        self.vid = MyVideoCapture(self.video_source)
+        self.canvas = tkinter.Canvas(window, height=self.vid.height, width=self.vid.width)
+        self.canvas.pack()
+
+        btn_frame = tkinter.Frame(window, background="Black")
+        btn_frame.place(x=0, y=0)
+
+        self.btn_snapshot = tkinter.Button(btn_frame, text="Snapshot", width=20, bg="black", fg="white", command=self.snapshot)
+        self.btn_snapshot.pack(side="left", padx=10, pady=10)
+
+        self.delay = 15
+        self.update()
+
+        self.window.mainloop()
+
+    def snapshot(self):
+        ret, frame = self.vid.get_frame()
+        if ret:
+            cv2.imwrite("My Capture " + time.strftime("%d-%m-%Y-%H-%M-%S") + ".jpg", cv2.cvtColor(frame, cv2.COLOR_RGB2BGR))
+            messagebox.showinfo("Notification", "Image Saved")
+
+    def update(self):
+        ret, frame = self.vid.get_frame()
+
+        if ret:
+            self.photo = PIL.ImageTk.PhotoImage(image=PIL.Image.fromarray(frame))
+            self.canvas.create_image(0, 0, image=self.photo, anchor=tkinter.NW)
+
+        self.window.after(self.delay, self.update)
+
+ class MyVideoCapture:
+    def __init__(self, video_source=0):
+        self.vid = cv2.VideoCapture(video_source)
+        if not self.vid.isOpened():
+            raise ValueError("Unable to open video source", video_source)
+
+        self.width = self.vid.get(cv2.CAP_PROP_FRAME_WIDTH)
+        self.height = self.vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
+
+    def get_frame(self):
+        if self.vid.isOpened():
+            ret, frame = self.vid.read()
+            if ret:
+                return ret, cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            else:
+                return ret, None
+        else:
+            return ret, None
+
+ App(tkinter.Tk(), "Camera")
+
 
 
 
@@ -93,8 +155,8 @@ if __name__==  '__main__' :
  
         elif ' what is your name ' in order :
               speak('my frineds call me jarvis .')
-        
-        elif 'search' in order or 'what is' in order  :
+
+        elif 'search' in order or 'what is' in order or 'what' in order or 'who is' in order or 'who' in order or'when' in order:
               speak('Searching...')
               #order=order.replace("wikipedia","")
               results = wikipedia.summary(order)
@@ -113,6 +175,7 @@ if __name__==  '__main__' :
               speak("here you go to youtube sir")
               webbrowser.open("youtube.com")
 
+
         elif 'open amazon' in order:
               speak("here you go to amazon sir. happy shopping")
               webbrowser.open("amazon.in")
@@ -123,10 +186,11 @@ if __name__==  '__main__' :
         
         elif 'open myntra' in order :
             speak("Here you go to myntra sir. Happing shopping \n")
-            webbrowser.open("myntra,com") 
+            webbrowser.open("myntra,com")
 
         elif ' cpu status' in order :
-            cpu()            
+            cpu()
+
         elif 'bmi' in order :
              speak("Please tell your height in centimetres")
              height = takeCommand()
@@ -157,23 +221,29 @@ if __name__==  '__main__' :
             img=pyautogui.screenshot()
             img.save(f"{name}.png")
             speak("screenshot captured sir!")
+
         elif 'exit' in order or 'quit' in order or 'thank you ' in order : 
             speak("Thankyou for using me sir. have a good day")
             sys.exit()
+
         elif 'shutdown' in order or 'turn off' in order :
             speak('Hold on a second sir! Your system is on itsa way to shutdown')
-            speak('MAke sure all of your applications are closed')
+            speak('Make sure all of your applications are closed')
             time.sleep(5)
             subprocess.call(['shudown','/s'])
+
         elif 'restart' in order :
             subprocess.call(['shudown','/r'])
+
         elif 'hibernate' in order :
             speak('Hibernating....')
             subprocess.call(['shutdown','/h'])
+
         elif 'log off 'in order :
             speak(' make sure all of your applications are closed before signing out sir !')
             time.sleep(5)
             sunprocess.call(['shutdown','/i'])
+
         elif "where is" in order:
             order = order.replace("where is"," ")
             location = order
@@ -196,7 +266,7 @@ if __name__==  '__main__' :
                  file.write(note)
                  speak("Done Sir!")
 
-        elif 'show note' in order :
+        elif 'show note' in order or 'show notes' in order or 'my notes' in order :
             speak("Showing notes")
             file=open("jarvis.txt","r")
             print(file.read())
@@ -209,6 +279,13 @@ if __name__==  '__main__' :
             strTime=datetime.now().strftime("%H:%M:%S")
             speak(f"Well, the time is {strTime}")
 
-
-
-                  
+        elif 'switch window' in order:
+            pyautogui.keyDown('alt')
+            pyautogui.press('tab')
+            time.sleep(1)
+            pyautogui.keyUp('alt')
+        elif 'empty recycle bin' in order:
+            winshell.recycle_bin().empty(confirm=False, show_progress = False, sound=True)
+            speak("recycle bin recycled")
+        elif 'camera' in order:
+            cam()
