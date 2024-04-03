@@ -135,10 +135,15 @@ def cam():
 
 
 
-if __name__==  '__main__' :
-    wishMe()
-    username()
-    while True :
+
+
+
+if __name__=='__main__' :
+    while True : 
+      check=takeCommand().lower()
+      if 'hey jarvis' in check or 'hello jarvis' in check or 'jarvis' in check or 'okay jarvis' in check :
+        wishMe()
+        username()
         order=takeCommand().lower()
         if 'how are you ' in order:
               speak("I am fine , Thankyou for asking ")
@@ -222,7 +227,7 @@ if __name__==  '__main__' :
             img.save(f"{name}.png")
             speak("screenshot captured sir!")
 
-        elif 'exit' in order or 'quit' in order or 'thank you ' in order : 
+        elif 'exit' in order or 'quit' in order or 'thank you ' in order  : 
             speak("Thankyou for using me sir. have a good day")
             sys.exit()
 
@@ -289,3 +294,7 @@ if __name__==  '__main__' :
             speak("recycle bin recycled")
         elif 'camera' in order:
             cam()
+        else :
+            continue
+      else:
+        continue
