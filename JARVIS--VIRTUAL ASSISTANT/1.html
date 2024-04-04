@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #222;
+    }
+    #circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: green;
+      box-shadow: 0 0 10px 0 teal;
+      border: none;
+      cursor: pointer;
+    }
+    #terminal {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #333;
+      color: white;
+      font-family: monospace;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <button id="circle"></button>
+  <div id="terminal"></div>
+  <script>
+    const circle = document.getElementById("circle");
+    circle.addEventListener("click", () => {
+      console.log("Button clicked");
+      // Add code to run Python script or show terminal output here
+    });
+  </script>
+</body>
+</html>
